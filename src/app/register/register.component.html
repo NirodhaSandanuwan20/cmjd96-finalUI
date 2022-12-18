@@ -1,0 +1,59 @@
+<div class="container" style="margin-top: 50px;">
+  <span style="font-family: 'Lobster', cursive;font-size: 40px; margin-bottom: 50px;">Register Here For Free !!</span>
+  <div class="row mt-5">
+    <div class="col-8">
+      <div class="card p-5">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>User Name</mat-label>
+          <input ngModel
+                 name="userName"
+                 id="userName"
+                 placeholder="Enter user name"
+                 matInput
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input ngModel
+                 name="userFirstName"
+                 id="userFirstName"
+                 placeholder="Enter your first name"
+                 matInput
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input ngModel
+                 name="userLastName"
+                 id="userLastName"
+                 placeholder="Enter your last name"
+                 matInput
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 ">
+          <mat-label>password</mat-label>
+          <input matInput
+                 ngModel
+                 name="userPassword"
+                 id="userPassword"
+                 placeholder="Create your password"
+                 type="password"
+          >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="w-100 ">Register </button>
+
+      </form>
+    </div>
+    </div>
+    <div class="col-4">
+      <img style="width:450px" src="assets/img/reg2.svg" alt="">
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<!--Home Nav Bar S-->
+<mat-toolbar color="white">
+  <span class="name">
+    <img style="width: 150px" src="assets/img/bloomingdales.svg">
+  </span>
+  <span class="space-right"></span>
+  <span><h6 style="font-size: small">Store & Event &nbsp;&nbsp;|&nbsp;&nbsp; Shopping Services &nbsp;&nbsp;|&nbsp;&nbsp;</h6> </span>&nbsp;
+  <span><h6 style="font-size: small">LKR. <img src="assets/img/slFlag.jpg" style="width: 40px;border-radius: 50px"></h6> </span>&nbsp;&nbsp;
+  <button *ngIf="! isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Login or Signup</button>
+  <button *ngIf="isLoggedIn()"  mat-raised-button color="primary" (click)="logout()">Logout</button>
+
+</mat-toolbar>
+<hr style="color: black;margin: 0">
+<!--Home Nav Bar End-->
+
+<!--Admin Nav Bar S-->
+<mat-toolbar color="white" *ngIf="isLoggedIn()">
+
+  <button mat-button color="black" routerLink="/home" routerLinkActive="active">HOME</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >WOMEN</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >SHOES</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >HANDBAGS</button>
+  <button *ngIf="!isAdmin()" mat-button color="black">MEN</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >KIDS</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >SALE</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >DESIGNERS</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >EDITORS</button>
+  <button *ngIf="!isAdmin()" mat-button color="black" >GIFTS</button>
+  <button *ngIf="isAdmin()" mat-button color="black" routerLink="/addNewProduct" routerLinkActive="active">ADD NEW PRODUCT</button>
+  <button *ngIf="isAdmin()" mat-button color="black" routerLink="/showProductDetails" routerLinkActive="active">SHOW PRODUCT DETAILS</button>
+  <button *ngIf="isAdmin()" mat-button color="black" >SUGGESTIONS</button>
+  <button *ngIf="isAdmin()" mat-button color="black" >COMPLAINTS</button>
+  <button *ngIf="isAdmin()" mat-button color="black" >ADD ADMINS</button>
+  <span class="space-right"></span>
+  <p *ngIf="isAdmin()" style="color: blue;font-family: 'Lobster', cursive" >Admin Panel</p>
+
+</mat-toolbar>
+<!--Admin Nav Bar End-->

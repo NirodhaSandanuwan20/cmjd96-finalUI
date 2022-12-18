@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital@1&display=swap');
+
+.outer{
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img{
+  width: 400px;
+}
+p{
+  color: red;
+  font-size: 40px;
+  font-family: 'Lobster', cursive !important;
+  font-family: 'Roboto', sans-serif;
+}

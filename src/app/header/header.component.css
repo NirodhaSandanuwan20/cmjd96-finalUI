@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital@1&display=swap');
+
+.space-right{
+  flex: 1 1 auto;
+}
+.name{
+  color: white;
+  font-size: 25px;
+  font-family: 'Lobster', cursive !important;
+  font-family: 'Roboto', sans-serif;
+}
+.active{
+  border-bottom: 5px solid black;
+  border-radius: 5px;
+}

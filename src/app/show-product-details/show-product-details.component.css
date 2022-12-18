@@ -1,0 +1,10 @@
+table {
+  width: 100%;
+}
+.descrip{
+  width: 200px;
+  margin-right: 30px;
+}
+.price{
+  text-align: center;
+}
