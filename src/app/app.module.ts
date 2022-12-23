@@ -30,7 +30,6 @@ import {ShowProductDetailsComponent} from './show-product-details/show-product-d
 import {ShowProductImagesDialogComponent} from './show-product-images-dialog/show-product-images-dialog.component';
 import {ProductViewDetailsComponent} from './product-view-details/product-view-details.component';
 import {RegisterComponent} from './register/register.component';
-import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -64,15 +63,7 @@ import {ToastrModule} from 'ngx-toastr';
     MatGridListModule,
     MatTableModule,
     MatDialogModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot(
-      {
-        maxOpened: 1,
-        progressBar: true,
-        progressAnimation: 'decreasing',
-        preventDuplicates: true,
-      }
-    )
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,

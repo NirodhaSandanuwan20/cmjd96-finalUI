@@ -6,7 +6,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {FileHandle} from '../_model/file-handle-model';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-add-new-product',
@@ -29,8 +29,7 @@ export class AddNewProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private sanitizer: DomSanitizer,
-              private activatedRoute: ActivatedRoute,
-              private toastrSerivice: ToastrService) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -49,7 +48,7 @@ export class AddNewProductComponent implements OnInit {
         productForm.reset();
         this.product.productImages = [];
         // @ts-ignore
-        this.popup('Customer Saved Success !', 'Complete', 'success');
+       /* this.popup('Customer Saved Success !', 'Complete', 'success');*/
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -100,10 +99,10 @@ export class AddNewProductComponent implements OnInit {
     this.product.productImages.push(fileHandle);
   }
   // tslint:disable-next-line:typedef
-  popup(message: string, title: string, type: string){
+/*  popup(message: string, title: string, type: string){
     switch (type) {
       case 'success': this.toastrSerivice.success(message, title); break;
       case 'error': this.toastrSerivice.error(message, title); break;
     }
-}
+}*/
 }
