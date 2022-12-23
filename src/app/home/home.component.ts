@@ -65,5 +65,4 @@ export class HomeComponent implements OnInit {
     this.productDetails = [];
     this.getAllProducts(searchKey);
   }
-
 }

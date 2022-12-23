@@ -30,6 +30,7 @@ import {ShowProductDetailsComponent} from './show-product-details/show-product-d
 import {ShowProductImagesDialogComponent} from './show-product-images-dialog/show-product-images-dialog.component';
 import {ProductViewDetailsComponent} from './product-view-details/product-view-details.component';
 import {RegisterComponent} from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {RegisterComponent} from './register/register.component';
     ShowProductDetailsComponent,
     ShowProductImagesDialogComponent,
     ProductViewDetailsComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
