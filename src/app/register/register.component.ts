@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   register(registerForm: NgForm) {
-this.userService.register(registerForm.value).subscribe(
+this.userService.register(registerForm.value.validators.required).subscribe(
   (response) => {
     console.log(response);
     // @ts-ignore

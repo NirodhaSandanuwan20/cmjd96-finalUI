@@ -14,7 +14,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./show-product-details.component.css']
 })
 export class ShowProductDetailsComponent implements OnInit {
-
+  showTable = false;
+  showMoreButton = false;
+  pageNumber = 0;
   productDetails: Product[] = [];
   displayedColumns: string[] = ['Id', 'Product Name', 'Product Description', 'Product Discounted Price', 'Product Actual Price', 'Images', 'Edit', 'Delete'];
 
@@ -31,15 +33,23 @@ export class ShowProductDetailsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   public getAllProducts() {
-    this.productService.getAllProducts(0)
+    this.showTable = false;
+    this.productService.getAllProducts(this.pageNumber)
       .pipe(
         map((x: Product[], i) => x.map((product: Product) => this.imageProcessingService.creatImages(product)))
       )
       .subscribe(
         (resp: Product[]) => {
           console.log(resp);
-          this.productDetails = resp;
-
+          resp.forEach(product => {
+            this.productDetails.push(product);
+          });
+          this.showTable = true;
+          if (resp.length === 4) {
+            this.showMoreButton = true;
+          } else {
+            this.showMoreButton = false;
+          }
         }, (error: HttpErrorResponse) => {
           console.log(error);
         }
@@ -48,7 +58,7 @@ export class ShowProductDetailsComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   deleteProduct(productId) {
-    if (confirm('Are You Sure Delete this Product ?')){
+    if (confirm('Are You Sure Delete this Product ?')) {
       this.productService.deleteProduct(productId).subscribe(
         (resp) => {
           console.log(resp);
@@ -58,7 +68,7 @@ export class ShowProductDetailsComponent implements OnInit {
           console.log(error);
         }
       );
-    }else {
+    } else {
       return;
     }
 
@@ -77,7 +87,12 @@ export class ShowProductDetailsComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  editProductDetails(productId){
-    this.router.navigate(['/addNewProduct', { productId }]);
+  editProductDetails(productId) {
+    this.router.navigate(['/addNewProduct', {productId}]);
+  }
+
+  loadMoreProduct() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAllProducts();
   }
 }
