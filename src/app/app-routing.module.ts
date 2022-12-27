@@ -11,12 +11,14 @@ import {ShowProductDetailsComponent} from './show-product-details/show-product-d
 import {ProductResolveService} from './_services/product-resolve.service';
 import {ProductViewDetailsComponent} from './product-view-details/product-view-details.component';
 import {RegisterComponent} from './register/register.component';
+import {BuyNowComponent} from "./buy-now/buy-now.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ['Admin']} },
   { path: 'user', redirectTo: '/home', pathMatch: 'full' ,  canActivate: [AuthGuard], data: {roles: ['User']} },
+  { path: 'buyNow', component: BuyNowComponent, canActivate: [AuthGuard], data: {roles: ['User']} },
   { path: 'login', component: LoginComponent },
   { path: 'registerNewUser', component: RegisterComponent },
   { path: 'addNewProduct', component: AddNewProductComponent, canActivate: [AuthGuard], data: {roles: ['Admin']},

@@ -31,6 +31,7 @@ import {ShowProductImagesDialogComponent} from './show-product-images-dialog/sho
 import {ProductViewDetailsComponent} from './product-view-details/product-view-details.component';
 import {RegisterComponent} from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { BuyNowComponent } from './buy-now/buy-now.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     ShowProductImagesDialogComponent,
     ProductViewDetailsComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    BuyNowComponent
   ],
   imports: [
     BrowserModule,

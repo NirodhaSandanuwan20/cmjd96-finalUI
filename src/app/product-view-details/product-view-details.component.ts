@@ -17,4 +17,7 @@ export class ProductViewDetailsComponent implements OnInit {
     this.product = this.activatedRoute.snapshot.data.product;
   }
 
+  addToCart(productName: string) {
+    alert(productName + ' Added To Cart !');
+  }
 }
