@@ -39,16 +39,18 @@ export class AddNewProductComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
   addProduct(productForm: NgForm) {
-
     const productFormData = this.prepareFormData(this.product);
     this.productService.addProduct(productFormData).subscribe(
       (response: Product) => {
         productForm.reset();
         this.product.productImages = [];
-        // @ts-ignore
-       /* this.popup('Customer Saved Success !', 'Complete', 'success');*/
+        if (this.isNewProduct) {
+          alert('Product Saved Success !');
+        } else {
+          alert('Product Update Success !');
+        }
+        /* this.popup('Customer Saved Success !', 'Complete', 'success');*/
       },
       (error: HttpErrorResponse) => {
         console.log(error);
@@ -74,7 +76,6 @@ export class AddNewProductComponent implements OnInit {
   }
 
 
-  // tslint:disable-next-line:typedef
   onFileSelected(event) {
     if (event.target.files) {
       const file = event.target.files[0];
@@ -89,20 +90,21 @@ export class AddNewProductComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
+
   removeImage(i: number) {
     this.product.productImages.splice(i, 1);
   }
 
-  // tslint:disable-next-line:typedef
+
   fileDropped(fileHandle: FileHandle) {
     this.product.productImages.push(fileHandle);
   }
+
   // tslint:disable-next-line:typedef
-/*  popup(message: string, title: string, type: string){
-    switch (type) {
-      case 'success': this.toastrSerivice.success(message, title); break;
-      case 'error': this.toastrSerivice.error(message, title); break;
-    }
-}*/
+  /*  popup(message: string, title: string, type: string){
+      switch (type) {
+        case 'success': this.toastrSerivice.success(message, title); break;
+        case 'error': this.toastrSerivice.error(message, title); break;
+      }
+  }*/
 }

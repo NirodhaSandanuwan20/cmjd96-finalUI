@@ -13,20 +13,20 @@ import {ProductViewDetailsComponent} from './product-view-details/product-view-d
 import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ['Admin']} },
-  { path: 'user/home', component: HomeComponent ,  canActivate: [AuthGuard], data: {roles: ['User']} },
+  { path: 'user', redirectTo: '/home', pathMatch: 'full' ,  canActivate: [AuthGuard], data: {roles: ['User']} },
   { path: 'login', component: LoginComponent },
   { path: 'registerNewUser', component: RegisterComponent },
-  { path: 'forbidden', component: ForbiddenComponent },
   { path: 'addNewProduct', component: AddNewProductComponent, canActivate: [AuthGuard], data: {roles: ['Admin']},
   resolve: {
     product: ProductResolveService
   }
   },
   { path: 'productViewDetails', component: ProductViewDetailsComponent, resolve: { product: ProductResolveService} },
-  {path: 'showProductDetails', component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: {roles: ['Admin']}}
+  {path: 'showProductDetails', component: ShowProductDetailsComponent, canActivate: [AuthGuard], data: {roles: ['Admin']}},
+  { path: '**', component: ForbiddenComponent }
 ];
 
 @NgModule({
