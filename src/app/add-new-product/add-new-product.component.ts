@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../_model/product.model';
 import {NgForm} from '@angular/forms';
 import {ProductService} from '../_services/product.service';
@@ -6,7 +6,6 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {FileHandle} from '../_model/file-handle-model';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
-
 
 @Component({
   selector: 'app-add-new-product',
@@ -107,4 +106,5 @@ export class AddNewProductComponent implements OnInit {
         case 'error': this.toastrSerivice.error(message, title); break;
       }
   }*/
+
 }

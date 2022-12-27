@@ -50,7 +50,7 @@ import { BuyNowComponent } from './buy-now/buy-now.component';
     ProductViewDetailsComponent,
     RegisterComponent,
     FooterComponent,
-    BuyNowComponent
+    BuyNowComponent,
   ],
   imports: [
     BrowserModule,

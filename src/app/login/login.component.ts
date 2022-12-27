@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserAuthService } from '../_services/user-auth.service';
-import { UserService } from '../_services/user.service';
+import {Router} from '@angular/router';
+import {UserAuthService} from '../_services/user-auth.service';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +14,29 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private userAuthService: UserAuthService,
     private router: Router
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  loginForm = new FormGroup({
+    userName: new FormControl('', [Validators.required]),
+    userPassword: new FormControl('', [Validators.required])
+  });
 
 
-  login(loginForm: NgForm) {
-    this.userService.login(loginForm.value).subscribe(
+  login() {
+
+    let customerTemp = {
+      userName: this.loginForm.get('userName')?.value,
+      userPassword: this.loginForm.get('userPassword')?.value
+    };
+
+    this.userService.login({
+      userName: customerTemp.userName,
+      userPassword: customerTemp.userPassword
+    }).subscribe(
       (response: any) => {
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
