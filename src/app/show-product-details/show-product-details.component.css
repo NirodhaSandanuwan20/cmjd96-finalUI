@@ -8,3 +8,6 @@ table {
 .price{
   text-align: center;
 }
+.btnn{
+  display: none;
+}

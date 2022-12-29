@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../_services/product.service';
 import {Product} from '../_model/product.model';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -14,11 +14,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./show-product-details.component.css']
 })
 export class ShowProductDetailsComponent implements OnInit {
-  showTable = false;
+
   showMoreButton = false;
+  showTable = false;
   pageNumber = 0;
   productDetails: Product[] = [];
   displayedColumns: string[] = ['Id', 'Product Name', 'Product Description', 'Product Discounted Price', 'Product Actual Price', 'Images', 'Edit', 'Delete'];
+
 
   constructor(private productService: ProductService,
               public imagesDialog: MatDialog,
@@ -71,11 +73,10 @@ export class ShowProductDetailsComponent implements OnInit {
     } else {
       return;
     }
-
   }
 
-  // tslint:disable-next-line:typedef
-  showImages(product: Product) {
+// tslint:disable-next-line:typedef
+  showImages(product:Product) {
     this.imagesDialog.open(ShowProductImagesDialogComponent, {
       data: {
         images: product.productImages
@@ -86,13 +87,15 @@ export class ShowProductDetailsComponent implements OnInit {
     console.log(product);
   }
 
-  // tslint:disable-next-line:typedef
+// tslint:disable-next-line:typedef
   editProductDetails(productId) {
     this.router.navigate(['/addNewProduct', {productId}]);
   }
 
+// tslint:disable-next-line:typedef
   loadMoreProduct() {
     this.pageNumber = this.pageNumber + 1;
     this.getAllProducts();
   }
+
 }

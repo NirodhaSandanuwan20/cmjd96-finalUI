@@ -36,3 +36,8 @@ mat-grid-tile{
   color: blue;
   cursor: pointer;
 }
+
+
+.btnn{
+  display: none;
+}

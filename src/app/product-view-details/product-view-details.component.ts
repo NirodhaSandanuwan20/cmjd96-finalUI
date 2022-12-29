@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../_model/product.model';
 import {ActivatedRoute} from "@angular/router";
 
@@ -9,7 +9,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProductViewDetailsComponent implements OnInit {
 
+  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
   product: Product;
+  alertBody = '';
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
@@ -18,6 +20,9 @@ export class ProductViewDetailsComponent implements OnInit {
   }
 
   addToCart(productName: string) {
-    alert(productName + ' Added To Cart !');
+    this.alertBody = productName + ' added to your cart !';
+    let el: HTMLElement = this.myDiv.nativeElement;
+    el.click();
+
   }
 }

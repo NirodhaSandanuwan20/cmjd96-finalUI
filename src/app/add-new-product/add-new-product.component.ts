@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../_model/product.model';
 import {NgForm} from '@angular/forms';
 import {ProductService} from '../_services/product.service';
@@ -14,8 +14,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AddNewProductComponent implements OnInit {
 
+  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
   isNewProduct = true;
-
+  alertBody = '';
   product: Product = {
     productId: null,
     productName: '',
@@ -44,10 +45,13 @@ export class AddNewProductComponent implements OnInit {
       (response: Product) => {
         productForm.reset();
         this.product.productImages = [];
+        const el: HTMLElement = this.myDiv.nativeElement;
         if (this.isNewProduct) {
-          alert('Product Saved Success !');
+          this.alertBody = 'Product Added Successfully';
+          el.click();
         } else {
-          alert('Product Update Success !');
+          this.alertBody = 'Product Updated Successfully';
+          el.click();
         }
         /* this.popup('Customer Saved Success !', 'Complete', 'success');*/
       },
